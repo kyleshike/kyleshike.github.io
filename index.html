@@ -407,7 +407,6 @@
     async function writeState(state) {
       try {
         await setDoc(doc(db, 'state', 'exampleState'), state);
-        console.log('State saved successfully!');
       } catch (error) {
         console.error('Error saving state:', error);
       }
@@ -422,7 +421,6 @@
           const state = docSnap.data();
           return state;
         } else {
-          console.log('No state data available');
         }
       } catch (error) {
         console.error('Error reading state:', error);
@@ -432,7 +430,6 @@
     async function login(email, password) {
       try {
         await signInWithEmailAndPassword(auth, email, password);
-        console.log('User logged in successfully!');
       } catch (error) {
         console.error('Error logging in:', error);
       }
@@ -452,7 +449,6 @@
       inputs.forEach(input => {
         input.disabled = true;
       });
-      console.log('All inputs and buttons have been disabled.');
     }
 
     // Function to enable all inputs and buttons
@@ -461,7 +457,6 @@
       inputs.forEach(input => {
         input.disabled = false;
       });
-      console.log('All inputs and buttons have been enabled.');
     }
 
 
