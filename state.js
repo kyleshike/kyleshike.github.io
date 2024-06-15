@@ -20,7 +20,7 @@ const state = {
   },
 };
 
-function restoreState() {
+async function restoreState() {
   const defaultState = {
     hiddenSections: {
       cantrips: false,
@@ -53,6 +53,9 @@ function restoreState() {
   const storage = localStorage.getItem("store");
   state._store = storage ? JSON.parse(storage) : defaultState;
   applyState();
+
+  const store = await readState();
+  console.log(store);
 }
 
 function applyState() {
@@ -109,7 +112,7 @@ function applyState() {
 }
 
 function saveState() {
-  localStorage.setItem("store", JSON.stringify(state._store));
+  writeState(state._store);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

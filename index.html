@@ -382,6 +382,55 @@
       <button onClick="longRest()">Long rest</button>
     </footer>
   </body>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBPeutFwkbZkmkpQaINgc62BzUuXbpyyLo",
+      authDomain: "dnd-character-de6e4.firebaseapp.com",
+      projectId: "dnd-character-de6e4",
+      storageBucket: "dnd-character-de6e4.appspot.com",
+      messagingSenderId: "67117312859",
+      appId: "1:67117312859:web:e54e2e43d4fc1eb0f8887e"
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Save state function
+    async function writeState(state) {
+      try {
+        await setDoc(doc(db, 'state', 'exampleState'), state);
+        console.log('State saved successfully!');
+      } catch (error) {
+        console.error('Error saving state:', error);
+      }
+    }
+
+    // Read state function
+    async function readState() {
+      const docRef = doc(db, 'state', 'exampleState');
+      try {
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const state = docSnap.data();
+          return state;
+        } else {
+          console.log('No state data available');
+        }
+      } catch (error) {
+        console.error('Error reading state:', error);
+      }
+    }
+
+    // Expose functions to global scope
+    window.writeState = writeState;
+    window.readState = readState;
+  </script>
+
   <script type="text/javascript" src="./util.js"></script>
   <script type="text/javascript" src="./state.js"></script>
   <script type="text/javascript" src="./rest.js"></script>
