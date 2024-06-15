@@ -386,6 +386,7 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
@@ -399,6 +400,8 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const auth = getAuth(app);
+    let CAN_WRITE = false;
 
     // Save state function
     async function writeState(state) {
@@ -426,9 +429,56 @@
       }
     }
 
+    async function login(email, password) {
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        console.log('User logged in successfully!');
+      } catch (error) {
+        console.error('Error logging in:', error);
+      }
+    }
+
+    onAuthStateChanged(auth, (user) => {      
+      if(!user) {
+        disableAllInputsAndButtons();
+        promptSignin();
+      } else {
+        enableAllInputsAndButtons();
+      }
+    });
+
+    function disableAllInputsAndButtons() {
+      const inputs = document.querySelectorAll('input, button, select, textarea');
+      inputs.forEach(input => {
+        input.disabled = true;
+      });
+      console.log('All inputs and buttons have been disabled.');
+    }
+
+    // Function to enable all inputs and buttons
+    function enableAllInputsAndButtons() {
+      const inputs = document.querySelectorAll('input, button, select, textarea');
+      inputs.forEach(input => {
+        input.disabled = false;
+      });
+      console.log('All inputs and buttons have been enabled.');
+    }
+
+
     // Expose functions to global scope
     window.writeState = writeState;
     window.readState = readState;
+    
+    function promptSignin() {
+      const isEditor = localStorage.getItem('isEditor');
+      if(isEditor === false) return;
+
+      const email = prompt('email');
+      const password = prompt('password');
+      login(email, password);
+    }
+
+    disableAllInputsAndButtons();
   </script>
 
   <script type="text/javascript" src="./util.js"></script>

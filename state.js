@@ -50,12 +50,8 @@ async function restoreState() {
     silver: 8,
   };
 
-  const storage = localStorage.getItem("store");
-  state._store = storage ? JSON.parse(storage) : defaultState;
+  state._store = await readState();
   applyState();
-
-  const store = await readState();
-  console.log(store);
 }
 
 function applyState() {
