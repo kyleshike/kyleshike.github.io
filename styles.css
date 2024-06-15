@@ -1,0 +1,42 @@
+header {
+  position: fixed;
+  background: #fdfdfd;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid #efefef;
+  height: 52px;
+}
+
+footer {
+  position: fixed;
+  background: #fdfdfd;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #efefef;
+  height: 32px;
+}
+
+body {
+  background: #fdfdfd;
+  color: #222;
+  padding-top: 52px;
+  padding-bottom: 32px;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ul, ol {
+  margin: 0;
+}
+
+h2 {
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+}
+
+section.hidden *:not(h2):not(input[type="checkbox"]) {
+  display: none;
+}
+
+td {
+  cursor: default;
+}

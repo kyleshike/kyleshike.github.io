@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arannis Character Sheet - Stats</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+
+  <body>
+    <header id="info">
+      <table>
+        <thead>
+          <tr>
+            <th>HP</th>
+            <th>AC</th>
+            <th>Proficiency Bonus</th>
+            <th>Initiative</th>
+            <th>Walking Speed</th>
+            <th>Level</th>
+            <th>Hit Dice Consumed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input name="hitPoints" type="number" min="0" max="17" onchange="state.set('hp', this.value)"></td>
+            <td id="armorClass">13</td>
+            <td id="proficiencyBonus">+2</td>
+            <td id="initiative">+3</td>
+            <td>30 ft</td>
+            <td id="level">3</td>
+            <td>
+              <input type="checkbox" name="hitDice" onchange="updateHitDice(this.checked)">
+              <input type="checkbox" name="hitDice" onchange="updateHitDice(this.checked)">
+              <input type="checkbox" name="hitDice" onchange="updateHitDice(this.checked)">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </header>
+
+    <main>
+      <section id="characteristics">
+        <h2>Characteristics</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Age</th>
+              <th>Weight</th>
+              <th>Height</th>
+              <th>Appearance</th>
+              <th>Alignment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>142</td>
+              <td>145 lb.</td>
+              <td>6' 6"</td>
+              <td>Dishevelled</td>
+              <td>Chaotic Neutral</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id='stats'>
+        <h2>Stats</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Strength</th>
+              <th>Dexterity</th>
+              <th>Constitution</th>
+              <th>Intelligence</th>
+              <th>Wisdom</th>
+              <th>Charisma</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>8</td>
+              <td>16</td>
+              <td>13</td>
+              <td>16</td>
+              <td>12</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td id="strMod">-1</td>
+              <td id="dexMod">+3</td>
+              <td id="conMod">+1</td>
+              <td id="intMod">+3</td>
+              <td id="wisMod">+1</td>
+              <td id="charMod">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="inventory">
+        <h2>Inventory</h2>
+        <ul>
+          <li>Quarterstaff</li>
+          <li>Small Dagger</li>
+          <li>Yarrow Stalks</li>
+          <li>Spellbook</li>
+          <li>Sheet of Paper</li>
+          <li>Quill</li>
+          <li>Bottle of Ink</li>
+        </ul>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <table>
+          <tbody>
+            <tr data-description="Acrobatics: (Dex) Use for balancing, tumbling, or other agile movements.">
+              <td>Acrobatics</td>
+              <td>+3</td>
+            </tr>
+            <tr data-description="Animal Handling: (Wis) Handle animals, calm them, or train them.">
+              <td>Animal Handling</td>
+              <td>+1</td>
+            </tr>
+            <tr data-description="Arcana: (Int) Knowledge about spells, magic items, or other arcane lore.">
+              <td><strong>Arcana</strong></td>
+              <td><strong>+5</strong></td>
+            </tr>
+            <tr data-description="(Str) Physical activities such as climbing, jumping, or swimming.">
+              <td>Athletics</td>
+              <td>-1</td>
+            </tr>
+            <tr data-description="Deception: (Cha) Influence others through deception, lies, or trickery.">
+              <td>Deception</td>
+              <td>0</td>
+            </tr>
+            <tr data-description="History: (Int) Knowledge about historical events, legends, or famous people.">
+              <td><strong>History</strong></td>
+              <td><strong>+5</strong></td>
+            </tr>
+            <tr data-description="Insight: (Wis) Read a creature's body language or emotional state.">
+              <td>Insight</td>
+              <td>+1</td>
+            </tr>
+            <tr data-description="Intimidation: (Cha) Coerce or intimidate others through threats or force.">
+              <td>Intimidation</td>
+              <td>0</td>
+            </tr>
+            <tr data-description="Investigation: (Int) Uncover clues, solve puzzles, or understand hidden things.">
+              <td>Investigation</td>
+              <td>+3</td>
+            </tr>
+            <tr data-description="Medicine: (Wis) Treat wounds, diagnose illnesses, or provide medical care.">
+              <td>Medicine</td>
+              <td>+1</td>
+            </tr>
+            <tr data-description="Nature: (Int) Knowledge about plants, animals, and survival in the wild.">
+              <td>Nature</td>
+              <td>+3</td>
+            </tr>
+            <tr data-description="Perception: (Wis) Notice fine details, spot hidden creatures, or detect ambushes.">
+              <td><strong>Perception</strong></td>
+              <td><strong>+3</strong></td>
+            </tr>
+            <tr data-description="(Cha) Perform in front of an audience with music, dance, or acting.">
+              <td>Performance</td>
+              <td>0</td>
+            </tr>
+            <tr data-description="Persuasion: (Cha) Persuade others through diplomacy, charm, or social grace.">
+              <td>Persuasion</td>
+              <td>0</td>
+            </tr>
+            <tr data-description="Religion: (Int) Knowledge about deities, religious traditions, and rituals.">
+              <td>Religion</td>
+              <td>+3</td>
+            </tr>
+            <tr data-description="Sleight of Hand: (Dex) Pick pockets, plant items, or perform other dexterous actions.">
+              <td>Sleight of Hand</td>
+              <td>+3</td>
+            </tr>
+            <tr data-description="Stealth: (Dex) Move stealthily and avoid detection.">
+              <td>Stealth</td>
+              <td>+3</td>
+            </tr>
+            <tr data-description="Survival: (Wis) Track creatures, hunt animals, and survive in the wilderness.">
+              <td><strong>Survival</strong></td>
+              <td><strong>+3</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="currency">
+        <h2>Currency</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Gold</th>
+              <th>Electrum</th>
+              <th>Silver</th>
+              <th>Copper</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="number" min="0" name="gold" onchange="state.set('gold', parseInt(this.value))"></td>
+              <td><input type="number" min="0" name="electrum" onchange="state.set('electrum', parseInt(this.value))"></td>
+              <td><input type="number" min="0" name="silver" onchange="state.set('silver', parseInt(this.value))"></td>
+              <td><input type="number" min="0" name="copper" onchange="state.set('copper', parseInt(this.value))"></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+       <section id="magic">
+        <h2>Magik</h2>
+        <table>
+          <thead>
+            <th>Spell Attack</th>
+            <th>Spell Save</th>
+            <th>Portency</th>
+            <th>Misty step</th>
+          </thead>
+          <tbody>
+            <td id="spellAttack"></td>
+            <td id="spellSave"></td>
+            <td>
+              <button id="portentDieOne" onclick="state.set('portentDieOneConsumed', true)"></button>
+              <button id="portentDieTwo" onclick="state.set('portentDieTwoConsumed', true)"></button>
+            </td>
+            <td><input type="checkbox" name="mistyStepConsumed" onchange="state.set('mistyStepConsumed', this.checked)"></td>
+          </tbody>
+        </table>
+       </section>
+
+      <section id='cantrips'>
+        <h2>Cantrips</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Spell Name</th>
+              <th>Damage</th>
+              <th>Saving Throw</th>
+              <th>Spell Save DC</th>
+              <th>Concentration</th>
+              <th>Prepared</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-description="Frostbite: You cause numbing frost to form on one creature that you can see within range. The target must make a Constitution saving throw. On a failed save, the target takes 1d6 cold damage, and it has disadvantage on the next weapon attack roll it makes before the end of its next turn.">
+              <td>Frostbite</td>
+              <td>1d6</td>
+              <td>CON</td>
+              <td>13</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr data-description="Minor Illusion: You create a sound or an image of an object within range that lasts for the duration. The illusion also ends if you dismiss it as an action or cast this spell again. If a creature uses its action to examine the sound or image, the creature can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC.">
+              <td>Minor Illusion</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr data-description="Poison Spray: You extend your hand toward a creature you can see within range and project a puff of noxious gas from your palm. The creature must succeed on a Constitution saving throw or take 1d12 poison damage.">
+              <td>Poison Spray</td>
+              <td>1d12</td>
+              <td>CON</td>
+              <td>13</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id='levelOneSpells'>
+        <h2>Level 1 Spells</h2>
+        <input type="checkbox" name='levelOneSpellSlotsConsumed' onchange="updateSpellSlot('levelOne', this.checked)">
+        <input type="checkbox" name='levelOneSpellSlotsConsumed' onchange="updateSpellSlot('levelOne', this.checked)">
+        <input type="checkbox" name='levelOneSpellSlotsConsumed' onchange="updateSpellSlot('levelOne', this.checked)">
+        <input type="checkbox" name='levelOneSpellSlotsConsumed' onchange="updateSpellSlot('levelOne', this.checked)">
+
+        <table>
+          <thead>
+            <tr>
+              <th>Spell Name</th>
+              <th>Damage</th>
+              <th>Saving Throw</th>
+              <th>Spell Save DC</th>
+              <th>Concentration</th>
+              <th>Prepared</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-description="Grease: Slick grease covers the ground in a 10-foot square centered on a point within range and turns it into difficult terrain for the duration. When the grease appears, each creature standing in its area must succeed on a Dexterity saving throw or fall prone.">
+              <td>Grease</td>
+              <td>-</td>
+              <td>DEX</td>
+              <td>13</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><button onclick="castLevelOneSpell()">Cast</button></td>
+            </tr>
+            <tr data-description="Mage Armor: You touch a willing creature who isn’t wearing armor, and a protective magical force surrounds it until the spell ends. The target’s base AC becomes 13 + its Dexterity modifier.">
+              <td>Mage Armor</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td><button onclick="castMageArmor()">Cast</button></td>
+            </tr>
+            <tr data-description="Magic Missile: You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4+1 force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.">
+              <td>Magic Missile</td>
+              <td>1d4+1 x 3</td>
+              <td>-</td>
+              <td>-</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td><button onclick="castLevelOneSpell(true)">Cast</button></td>
+            </tr>
+            <tr data-description="Detect Magic: For the duration, you sense the presence of magic within 30 feet of you. If you sense magic in this way, you can use your action to see a faint aura around any visible creature or object in the area that bears magic, and you learn its school of magic, if any.">
+              <td>Detect Magic</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><button onclick="castLevelOneSpell()">Cast</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="levelTwoSpells">
+        <h2>Level 2 Spells</h2>
+        <input type="checkbox" name='levelTwoSpellSlotsConsumed' onchange="updateSpellSlot('levelTwo', this.checked)">
+        <input type="checkbox" name='levelTwoSpellSlotsConsumed' onchange="updateSpellSlot('levelTwo', this.checked)">
+
+        <table>
+          <thead>
+            <tr>
+              <th>Spell Name</th>
+              <th>Damage</th>
+              <th>Saving Throw</th>
+              <th>Spell Save DC</th>
+              <th>Concentration</th>
+              <th>Prepared</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-description="Hold Person: Choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. At the end of each of its turns, the target can make another Wisdom saving throw. On a success, the spell ends on the target.">
+              <td>Hold Person</td>
+              <td>-</td>
+              <td>WIS</td>
+              <td>13</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><button onclick="castLevelTwoSpell()">Cast</button></td>
+            </tr>
+            <tr data-description="Scorching Ray: You create three rays of fire and hurl them at targets within range. You can hurl them at one target or several. Make a ranged spell attack for each ray. On a hit, the target takes 2d6 fire damage.">
+              <td>Scorching Ray</td>
+              <td>2d6 x 3</td>
+              <td>-</td>
+              <td>-</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td><button onclick="castLevelTwoSpell()">Cast</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <button onClick="shortRest()">Short rest</button>
+      <button onClick="longRest()">Long rest</button>
+    </footer>
+  </body>
+  <script type="text/javascript" src="./util.js"></script>
+  <script type="text/javascript" src="./state.js"></script>
+  <script type="text/javascript" src="./rest.js"></script>
+  <script type="text/javascript" src="./spells.js"></script>
+</html>
+
+
