@@ -1,3 +1,20 @@
+const localState = localStorage.getItem("state");
+
+function disableAllInputsAndButtons() {
+  const inputs = document.querySelectorAll("input, button, select, textarea");
+  inputs.forEach((input) => {
+    input.disabled = true;
+  });
+}
+
+// Function to enable all inputs and buttons
+function enableAllInputsAndButtons() {
+  const inputs = document.querySelectorAll("input, button, select, textarea");
+  inputs.forEach((input) => {
+    input.disabled = false;
+  });
+}
+
 const mods = {
   proficiency: parseInt(document.getElementById("proficiencyBonus").innerHTML),
   str: parseInt(document.getElementById("strMod").innerHTML),
@@ -9,7 +26,7 @@ const mods = {
 };
 
 const state = {
-  _store: {},
+  _store: localState ? JSON.parse(localState) : {},
   get: (key) => state._store[key],
   set: (key, value) => {
     if (state._store[key] === value) return;
@@ -19,40 +36,6 @@ const state = {
     saveState();
   },
 };
-
-async function restoreState() {
-  const defaultState = {
-    hiddenSections: {
-      cantrips: false,
-      characteristics: false,
-      currency: false,
-      inventory: false,
-      levelOneSpells: false,
-      levelTwoSpells: false,
-      magic: false,
-      skills: false,
-      stats: false,
-    },
-    arcaneRecoveryConsumed: false,
-    copper: 0,
-    electrum: 0,
-    gold: 0,
-    hitDiceConsumed: 0,
-    hp: 0,
-    levelOneSpellSlotsConsumed: 0,
-    levelTwoSpellSlotsConsumed: 0,
-    mageArmorActive: false,
-    mistyStepConsumed: false,
-    portentDieOne: 19,
-    portentDieOneConsumed: false,
-    portentDieTwo: 1,
-    portentDieTwoConsumed: false,
-    silver: 8,
-  };
-
-  state._store = await readState();
-  applyState();
-}
 
 function applyState() {
   document.querySelector('input[name="hitPoints"]').value =
@@ -66,10 +49,12 @@ function applyState() {
     state.get("copper") ?? 0;
   document.querySelector('input[name="mistyStepConsumed"]').checked =
     state.get("mistyStepConsumed");
-  document.getElementById("portentDieOne").innerHTML =
-    state.get("portentDieOne");
-  document.getElementById("portentDieTwo").innerHTML =
-    state.get("portentDieTwo");
+  if (isEditor()) {
+    document.getElementById("portentDieOne").innerHTML =
+      state.get("portentDieOne");
+    document.getElementById("portentDieTwo").innerHTML =
+      state.get("portentDieTwo");
+  }
   document.getElementById("armorClass").innerHTML =
     (state.get("mageArmorActive") ? 13 : 10) + mods.dex;
   document.getElementById("spellAttack").innerHTML =
@@ -101,14 +86,22 @@ function applyState() {
     "portentDieTwoConsumed"
   );
 
-  Object.entries(state.get("hiddenSections")).forEach(
+  Object.entries(state.get("hiddenSections" ?? {})).forEach(
     ([id, hidden]) =>
       (document.getElementById(id).className = hidden ? "hidden" : "")
   );
 }
 
 function saveState() {
+  localStorage.setItem("state", JSON.stringify(state._store));
   writeState(state._store);
+}
+
+async function restoreState() {
+  applyState();
+  state._store = await readState();
+  localStorage.setItem("state", JSON.stringify(state._store));
+  applyState();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
