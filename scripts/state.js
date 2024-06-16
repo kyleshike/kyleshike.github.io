@@ -1,13 +1,13 @@
 import { readState, writeState, isEditor } from "./firebase.js";
 
 const modifiers = {
-  proficiency: parseInt(proficiencyBonus.innerHTML),
-  str: parseInt(strMod.innerHTML),
-  dex: parseInt(dexMod.innerHTML),
-  con: parseInt(conMod.innerHTML),
-  int: parseInt(intMod.innerHTML),
-  wis: parseInt(wisMod.innerHTML),
-  char: parseInt(charMod.innerHTML),
+  proficiency: parseInt(elements.proficiencyBonus.innerHTML),
+  str: parseInt(elements.strMod.innerHTML),
+  dex: parseInt(elements.dexMod.innerHTML),
+  con: parseInt(elements.conMod.innerHTML),
+  int: parseInt(elements.intMod.innerHTML),
+  wis: parseInt(elements.wisMod.innerHTML),
+  char: parseInt(elements.charMod.innerHTML),
 };
 
 window.state = {
@@ -36,11 +36,12 @@ function getCacheState() {
 }
 
 export function applyState() {
-  elements.hitPoints.value = state.get(hitPoints) ?? elements.hitPoints.max;
-  elements.gold.value = state.get(gold) ?? 0;
-  elements.electrum.value = state.get(electrum) ?? 0;
-  elements.silver.value = state.get(silver) ?? 0;
-  elements.copper.value = state.get(copper) ?? 0;
+  elements.hitPoints.innerHTML =
+    state.get(hitPoints) ?? elements.hitPoints.dataset.max;
+  // elements.gold.value = state.get(gold) ?? 0;
+  // elements.electrum.value = state.get(electrum) ?? 0;
+  // elements.silver.value = state.get(silver) ?? 0;
+  // elements.copper.value = state.get(copper) ?? 0;
   elements.mistyStepConsumed.checked = state.get(mistyStepConsumed);
 
   if (isEditor) {
@@ -68,8 +69,8 @@ export function applyState() {
       (el.checked = index + 1 <= state.get(levelTwoSpellSlotsConsumed))
   );
 
-  elements.portentDieOne.disabled = state.get(portentDieOneConsumed);
-  elements.portentDieTwo.disabled = state.get(portentDieTwoConsumed);
+  elements.portentDieOneInput.checked = state.get(portentDieOneConsumed);
+  elements.portentDieTwoInput.checked = state.get(portentDieTwoConsumed);
 }
 
 function saveState() {

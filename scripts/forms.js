@@ -26,7 +26,7 @@ function applyShortRest() {
 }
 
 function applyLongRest() {
-  state.set(hitPoints, parseInt(elements.hitPoints.max));
+  state.set(hitPoints, parseInt(elements.hitPoints.dataset.max));
   state.set(hitDiceConsumed, 0);
   state.set(levelOneSpellSlotsConsumed, 0);
   state.set(levelTwoSpellSlotsConsumed, 0);
@@ -113,17 +113,16 @@ function arcaneRecovery() {
 }
 
 export function applyEventListeners() {
-  [
-    elements.hitPoints,
-    elements.gold,
-    elements.electrum,
-    elements.silver,
-    elements.copper,
-  ].forEach((input) => {
-    input.addEventListener("change", ({ currentTarget: { name, value } }) => {
-      state.set(name, parseInt(value));
-    });
-  });
+  // [
+  //   elements.gold,
+  //   elements.electrum,
+  //   elements.silver,
+  //   elements.copper,
+  // ].forEach((input) => {
+  //   input.addEventListener("change", ({ currentTarget: { name, value } }) => {
+  //     state.set(name, parseInt(value));
+  //   });
+  // });
 
   elements.hitDice.forEach((input) => {
     input.addEventListener("change", ({ currentTarget: { checked } }) => {
@@ -186,4 +185,23 @@ export function applyEventListeners() {
   elements.castMageArmor.addEventListener("click", castMageArmor);
   elements.longRest.addEventListener("click", applyLongRest);
   elements.shortRest.addEventListener("click", applyShortRest);
+
+  [elements.portentDieOneInput, elements.portentDieTwoInput].forEach(
+    (checkbox) => {
+      checkbox.addEventListener(
+        "change",
+        ({ currentTarget: { name, checked } }) => {
+          state.set(name, checked);
+        }
+      );
+    }
+  );
+
+  elements.incrementHP.addEventListener("click", () => {
+    state.set(hitPoints, state.get(hitPoints) + 1);
+  });
+
+  elements.decrementHP.addEventListener("click", () => {
+    state.set(hitPoints, state.get(hitPoints) - 1);
+  });
 }

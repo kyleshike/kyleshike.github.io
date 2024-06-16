@@ -302,7 +302,7 @@
           <div class="cell centered">/</div>
           <div class="cell centered">/</div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
-          <span><button class="castBtn" name="castLevelOne" data-mageArmor="true">Cast</button></span>
+          <span><button class="castBtn" name="castMageArmor">Cast</button></span>
         </div>
         <div class="row" data-description="Magic Missile: Creates 3 darts of force, each dealing 1d4+1 force damage.">
           <div class="cell">Magic Missile</div>
@@ -310,7 +310,7 @@
           <div class="cell centered">/</div>
           <div class="cell centered">/</div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
-          <span><button class="castBtn" name="castLevelOne" data-canUpcast="true">Cast</button></span>
+          <span><button class="castBtn" name="castLevelOne" data-can-upcast="true">Cast</button></span>
         </div>
         <div class="row"
           data-description="Ray of Sickness: 2d8 poison damage, target makes a Constitution saving throw.">
@@ -332,8 +332,6 @@
         <p class="purple">Level Two</p>
 
         <div class='checkboxes'>
-          <label><input type="checkbox" name='levelTwoSpellSlotsConsumed'><span></span></label>
-          <label><input type="checkbox" name='levelTwoSpellSlotsConsumed'><span></span></label>
           <label><input type="checkbox" name='levelTwoSpellSlotsConsumed'><span></span></label>
           <label><input type="checkbox" name='levelTwoSpellSlotsConsumed'><span></span></label>
         </div>
@@ -369,6 +367,8 @@
       </div>
     </section>
   </main>
+
+  <script type="module" src="./scripts/runtime.js"></script>
 </body>
 
 </html>
