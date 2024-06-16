@@ -453,7 +453,7 @@
     onAuthStateChanged(auth, async (user) => {
       if(!user) {
         disableAllInputsAndButtons();
-        if(isEditor()) {
+        if(isEditor) {
           const email = window.prompt('email');
           const password = window.prompt('password');
 
