@@ -113,16 +113,13 @@ function arcaneRecovery() {
 }
 
 export function applyEventListeners() {
-  // [
-  //   elements.gold,
-  //   elements.electrum,
-  //   elements.silver,
-  //   elements.copper,
-  // ].forEach((input) => {
-  //   input.addEventListener("change", ({ currentTarget: { name, value } }) => {
-  //     state.set(name, parseInt(value));
-  //   });
-  // });
+  [elements.gold, elements.electrum, elements.silver, elements.copper].forEach(
+    (input) => {
+      input.addEventListener("change", ({ currentTarget: { name, value } }) => {
+        state.set(name, parseInt(value));
+      });
+    }
+  );
 
   elements.hitDice.forEach((input) => {
     input.addEventListener("change", ({ currentTarget: { checked } }) => {

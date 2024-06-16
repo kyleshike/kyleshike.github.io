@@ -4,65 +4,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arannis Character Sheet</title>
+  <title>Arannis Oat-eye</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
   <main>
-    <section id="overview">
-      <p class="section-heading green">
-        <img src="./svgs/magnifying-glass.svg">
-        Overview
-      </p>
+    <div class="section-wrapper">
+      <section id="overview">
+        <p class="section-heading green">
+          <img src="./svgs/magnifying-glass.svg">
+          Overview
+        </p>
 
-      <div>
-        <span>Hit Points</span>
-        <div class="hpButtons">
-          <button name="decrementHP" class="decrement-btn">
-            <img width="12" src="./svgs/minus.svg">
-          </button>
+        <div>
+          <span>Hit Points</span>
+          <div class="hpButtons">
+            <button name="decrementHP" class="decrement-btn">
+              <img width="12" src="./svgs/minus.svg">
+            </button>
 
-          <span id="hitPoints" data-max="17">17</span>
+            <span id="hitPoints" data-max="17">17</span>
 
-          <button name="incrementHP" class="increment-btn">
-            <img width="12" src="./svgs/plus.svg">
-          </button>
+            <button name="incrementHP" class="increment-btn">
+              <img width="12" src="./svgs/plus.svg">
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <span>Armor Class</span>
-        <span id="armorClass">17</span>
-      </div>
-
-      <div>
-        <span>Proficiency Bonus</span>
-        <span id="proficiencyBonus">+2</span>
-      </div>
-
-      <div>
-        <span>Initiative</span>
-        <span id="initiative">+3</span>
-      </div>
-
-      <div>
-        <span>Walking Speed</span>
-        <span id="walkingSpeed">30ft</span>
-      </div>
-
-      <div>
-        <span>Hit Dice</span>
-        <div class="checkboxes">
-          <label><input type="checkbox" name="hitDice"><span></span></label>
-          <label><input type="checkbox" name="hitDice"><span></span></label>
-          <label><input type="checkbox" name="hitDice"><span></span></label>
+        <div>
+          <span>Armor Class</span>
+          <span id="armorClass">17</span>
         </div>
-      </div>
 
-      <button id='shortRest' name="shortRest">Short Rest</button>
-      <button id='longRest' name="longRest">Long Rest</button>
-    </section>
+        <div>
+          <span>Proficiency Bonus</span>
+          <span id="proficiencyBonus">+2</span>
+        </div>
+
+        <div>
+          <span>Initiative</span>
+          <span id="initiative">+3</span>
+        </div>
+
+        <div>
+          <span>Walking Speed</span>
+          <span id="walkingSpeed">30ft</span>
+        </div>
+
+        <div>
+          <span>Hit Dice</span>
+          <div class="checkboxes">
+            <label><input type="checkbox" name="hitDice"><span></span></label>
+            <label><input type="checkbox" name="hitDice"><span></span></label>
+            <label><input type="checkbox" name="hitDice"><span></span></label>
+          </div>
+        </div>
+
+        <button id='shortRest' name="shortRest">Short Rest</button>
+        <button id='longRest' name="longRest">Long Rest</button>
+      </section>
+
+      <section id="currency">
+        <p class="section-heading yellow">
+          <img src=" ./svgs/cog.svg">
+          Inventory
+        </p>
+
+        <div>Gold <input type="number" name="gold"></div>
+        <div>Electrum <input type="number" name="electrum"></div>
+        <div>Silver <input type="number" name="silver"></div>
+        <div>Copper<input type="number" name="copper"></div>
+      </section>
+    </div>
 
     <section id="skills">
       <p class="section-heading yellow">
@@ -178,7 +192,8 @@
           <span id="spellSave"></span>
         </div>
 
-        <div>
+        <div
+          data-description="Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied space that you can see.">
           <span>Misty Step</span>
           <label><input type="checkbox" name="mistyStepConsumed"><span></span></label>
         </div>
@@ -205,32 +220,35 @@
           Stats
         </p>
 
-        <div>
+        <div
+          data-description="Strength measures bodily power, athletic training, and the extent to which you can exert raw physical force.">
           <span>Strength</span>
           <span id="strength">-1</span>
         </div>
 
-        <div>
+        <div data-description="Dexterity measures agility, reflexes, and balance.">
           <span>Dexterity</span>
           <span id="dexterity">+3</span>
         </div>
 
-        <div>
+        <div data-description="Constitution measures health, stamina, and vital force.">
           <span>Constitution</span>
           <span id="constitution">+1</span>
         </div>
 
-        <div>
+        <div data-description="Intelligence measures mental acuity, information recall, and analytical skill.">
           <span>Intelligence</span>
           <span id="intelligence">+3</span>
         </div>
 
-        <div>
+        <div
+          data-description="Wisdom reflects how attuned you are to the world around you and represents perceptiveness and intuition.">
           <span>Wisdom</span>
           <span id="wisdom">+1</span>
         </div>
 
-        <div>
+        <div
+          data-description="Charisma measures your ability to interact effectively with others. It includes such factors as confidence and eloquence.">
           <span>Charisma</span>
           <span id="charisma">+0</span>
         </div>
@@ -249,19 +267,30 @@
           <div class="cell">Saving Throw</div>
         </div>
 
-        <div class="row" data-description="Frostbite: 1d6 cold damage, target makes a Constitution saving throw.">
+        <div class="row" data-description="Frostbite: You cause numbing frost to form on one creature that you can see within range. The target must make a Constitution saving throw. On a failed save, the target takes 1d6 cold damage, and it has disadvantage on the next weapon attack roll it makes before the end of its next turn.
+  
+The spell’s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).">
           <div class="cell">Frostbite</div>
           <div class="cell">1d6 cold</div>
           <div class="cell centered">CON</div>
         </div>
 
-        <div class="row" data-description="Minor Illusion: Create a sound or an image of an object.">
+        <div class="row"
+          data-description="Minor Illusion: You create a sound or an image of an object within range that lasts for the duration. The illusion also ends if you dismiss it as an action or cast this spell again.
+
+If you create a sound, its volume can range from a whisper to a scream. It can be your voice, someone else's voice, a lion's roar, a beating of drums, or any other sound you choose. The sound continues unabated throughout the duration, or you can make discrete sounds at different times before the spell ends.
+
+If you create an image of an object--such as a chair, muddy footprints, or a small chest--it must be no larger than a 5-foot cube. The image can't create sound, light, smell, or any other sensory effect. Physical interaction with the image reveals it to be an illusion, because things can pass through it.
+
+If a creature uses its action to examine the sound or image, the creature can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the illusion becomes faint to the creature.">
           <div class="cell">Minor Illusion</div>
           <div class="cell centered">/</div>
           <div class="cell centered">/</div>
         </div>
 
-        <div class="row" data-description="Poison Spray: 1d12 poison damage, target makes a Constitution saving throw.">
+        <div class="row" data-description="Poison Spray: You extend your hand toward a creature you can see within range and project a puff of noxious gas from your palm. The creature must succeed on a Constitution saving throw or take 1d12 poison damage.
+
+This spell's damage increases by 1d12 when you reach 5th level (2d12), 11th level (3d12), and 17th level (4d12).">
           <div class="cell">Poison Spray</div>
           <div class="cell">1d12 poison</div>
           <div class="cell centered">CON</div>
@@ -288,7 +317,19 @@
           <div class="cell"><img src="./svgs/academic-cap.svg"></div>
         </div>
         <div class="row"
-          data-description="Grease: Create a slick surface, targets make a Dexterity saving throw or fall prone.">
+          data-description="Detect Magic: For the duration, you sense the presence of magic within 30 feet of you. If you sense magic in this way, you can use your action to see a faint aura around any visible creature or object in the area that bears magic, and you learn its school of magic, if any.
+
+The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.">
+          <div class="cell">Detect Magic (ritual)</div>
+          <div class="cell centered">/</div>
+          <div class="cell centered">/</div>
+          <div class="cell centered">/</div>
+          <div class="cell centered">/</div>
+        </div>
+        <div class="row"
+          data-description="Grease: Slick grease covers the ground in a 10-foot square centered on a point within range and turns it into difficult terrain for the duration.
+
+When the grease appears, each creature standing in its area must succeed on a Dexterity saving throw or fall prone. A creature that enters the area or ends its turn there must also succeed on a Dexterity saving throw or fall prone.">
           <div class="cell">Grease</div>
           <div class="cell centered">/</div>
           <div class="cell centered">DEX</div>
@@ -296,7 +337,8 @@
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <span><button class="castBtn" name="castLevelOne">Cast</button></span>
         </div>
-        <div class="row" data-description="Mage Armor: Grants a target a base AC of 13 + Dexterity modifier.">
+        <div class="row"
+          data-description="Mage Armor: You touch a willing creature who isn't wearing armor, and a protective magical force surrounds it until the spell ends. The target's base AC becomes 13 + its Dexterity modifier. The spell ends if the target dons armor or if you dismiss the spell as an action.">
           <div class="cell">Mage Armor</div>
           <div class="cell centered">/</div>
           <div class="cell centered">/</div>
@@ -304,7 +346,10 @@
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <span><button class="castBtn" name="castMageArmor">Cast</button></span>
         </div>
-        <div class="row" data-description="Magic Missile: Creates 3 darts of force, each dealing 1d4+1 force damage.">
+        <div class="row"
+          data-description="Magic Missile: You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.
+
+When you cast this spell using a spell slot of 2nd level or higher, the spell creates one more dart for each slot level above 1st.">
           <div class="cell">Magic Missile</div>
           <div class="cell">1d4+1 force</div>
           <div class="cell centered">/</div>
@@ -313,7 +358,9 @@
           <span><button class="castBtn" name="castLevelOne" data-can-upcast="true">Cast</button></span>
         </div>
         <div class="row"
-          data-description="Ray of Sickness: 2d8 poison damage, target makes a Constitution saving throw.">
+          data-description="Ray of Sickness: A ray of sickening greenish energy lashes out toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 2d8 poison damage and must make a Constitution saving throw. On a failed save, it is also poisoned until the end of your next turn.
+
+When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.">
           <div class="cell">Ray of Sickness</div>
           <div class="cell">2d8 poison</div>
           <div class="cell centered">CON</div>
@@ -346,22 +393,30 @@
           <div class="cell"><img src="./svgs/academic-cap.svg"></div>
         </div>
 
-        <div class="row" data-description="Hold Person: Paralyze a target, who must make a Wisdom saving throw.">
+        <div class="row"
+          data-description="Hold Person: Choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. At the end of each of its turns, the target can make another Wisdom saving throw. On a success, the spell ends on the target.
+
+At Higher Levels. When you cast this spell using a spell slot of 3rd level or higher, you can target one additional humanoid for each slot level above 2nd. The humanoids must be within 30 feet of each other when you target them.">
           <div class="cell">Hold Person</div>
           <div class="cell centered">/</div>
           <div class="cell">WIS</div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
-          <span><button class="castBtn" name="castLevelTwo">Cast</button></span>
+          <span><button class="castBtn" data-can-upcast="true" name="castLevelTwo">Cast</button></span>
         </div>
 
-        <div class="row" data-description="Scorching Ray: Create 3 rays of fire, each dealing 2d6 fire damage.">
+        <div class="row"
+          data-description="Scorching Ray: You create three rays of fire and hurl them at targets within range. You can hurl them at one target or several.
+
+Make a ranged spell attack for each ray. On a hit, the target takes 2d6 fire damage.
+        
+At Higher Levels. When you cast this spell using a spell slot of 3rd level or higher, you create one additional ray for each slot level above 2nd.">
           <div class="cell">Scorching Ray</div>
           <div class="cell">2d6 fire</div>
           <div class="cell centered">/</div>
           <div class="cell centered">/</div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
-          <span><button class="castBtn" name="castLevelTwo">Cast</button></span>
+          <span><button class="castBtn" data-can-upcast="true" name="castLevelTwo">Cast</button></span>
         </div>
 
       </div>

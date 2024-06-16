@@ -38,10 +38,10 @@ function getCacheState() {
 export function applyState() {
   elements.hitPoints.innerHTML =
     state.get(hitPoints) ?? elements.hitPoints.dataset.max;
-  // elements.gold.value = state.get(gold) ?? 0;
-  // elements.electrum.value = state.get(electrum) ?? 0;
-  // elements.silver.value = state.get(silver) ?? 0;
-  // elements.copper.value = state.get(copper) ?? 0;
+  elements.gold.value = state.get(gold) ?? 0;
+  elements.electrum.value = state.get(electrum) ?? 0;
+  elements.silver.value = state.get(silver) ?? 0;
+  elements.copper.value = state.get(copper) ?? 0;
   elements.mistyStepConsumed.checked = state.get(mistyStepConsumed);
 
   if (isEditor) {

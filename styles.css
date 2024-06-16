@@ -57,6 +57,7 @@ main {
   display: flex;
   gap: 16px;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 section {
@@ -70,6 +71,7 @@ section {
   overflow: scroll;
   max-height: calc(100vh - 56px);
   position: relative;
+  box-shadow: 2px 3px 0px 0px #040506;
 }
 
 .section-wrapper {
@@ -102,6 +104,7 @@ section>div:not(.unstyled):not(.table) {
   align-items: center;
   justify-content: space-between;
   min-height: 40px;
+  box-shadow: 1px 1px 1px #000;
 }
 
 section#spells {
@@ -340,6 +343,7 @@ button:disabled::before {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  box-shadow: 1px 1px 1px #000;
 }
 
 .castBtn {
@@ -354,4 +358,18 @@ button:disabled::before {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+input:not([type="checkbox"]) {
+  background: transparent;
+  font-size: 16px;
+  border: 1px solid var(--light-300);
+  width: 100px;
+  padding: 4px;
+  color: var(--light-100);
+}
+
+#overview {
+  min-height: 477px;
 }
