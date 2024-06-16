@@ -1,42 +1,258 @@
-header {
-  position: fixed;
-  background: #fdfdfd;
-  top: 0;
-  width: 100%;
-  border-bottom: 1px solid #efefef;
-  height: 52px;
-}
+:root {
+  /* White shades */
+  --color-white-100: #FCFCFC;
+  --color-white-100-50: rgba(218, 229, 242, 0.5);
 
-footer {
-  position: fixed;
-  background: #fdfdfd;
-  bottom: 0;
-  width: 100%;
-  border-top: 1px solid #efefef;
-  height: 32px;
+  /* Shading colors */
+  --color-shading-200-20: rgba(43, 55, 70, 0.2);
+  --color-shading-200-40: rgba(43, 55, 70, 0.4);
+
+  /* Light colors */
+  --color-light-100: #DAE5F2;
+  --color-light-200: #C1D4E9;
+  --color-light-300: #869DB6;
+
+  /* Medium colors */
+  --color-medium-100: #6E87A1;
+  --color-medium-200: #566D84;
+  --color-medium-300: #4E6378;
+
+  /* Dark colors */
+  --color-dark-100: #405164;
+  --color-dark-150: #303D4C;
+  --color-dark-200: #1E2630;
+  --color-dark-300: #181F28;
+
+  /* Orange shades */
+  --color-orange-100: #FFBB33;
+  --color-orange-200: #FFAA00;
+  --color-orange-300: #EA9E07;
+
+  /* Green shades */
+  --color-green-100: #34E7A6;
+  --color-green-200: #01E190;
+  --color-green-300: #01B473;
+
+  /* Text colors */
+  --color-primary: #DAE5F2;
+  --color-secondary: #869DB6;
+
+  /* Font */
+  --font-family: 'Public Sans', sans-serif;
 }
 
 body {
-  background: #fdfdfd;
-  color: #222;
-  padding-top: 52px;
-  padding-bottom: 32px;
+  background-color: var(--color-dark-200);
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ul, ol {
-  margin: 0;
+body, body * {
+  user-select: none;
+}
+
+/* General Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Specific Heading Styles */
+h1 {
+  font-size: 64px;
+  line-height: 80px;
 }
 
 h2 {
-  cursor: pointer;
-  user-select: none;
-  display: inline-block;
+  font-size: 48px;
+  line-height: 64px;
+}
+
+h3 {
+  font-size: 32px;
+  line-height: 48px;
+}
+
+h4 {
+  font-size: 24px;
+  line-height: 36px;
+  text-align: right;
+}
+
+h5 {
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+}
+
+h6 {
+  font-size: 18px;
+  line-height: 28px;
+  text-align: right;
+}
+
+/* Body Text */
+body, p {
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--color-secondary);
+}
+
+/* Subtitle */
+.subtitle2 {
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--color-primary);
+}
+
+/* Caption */
+caption {
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+/* Button Text */
+button {
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 26px;
+  color: var(--color-primary);
 }
 
 section.hidden *:not(h2):not(input[type="checkbox"]) {
   display: none;
 }
 
-td {
-  cursor: default;
+.icon-sm {
+  height: 16px;
+  width: 16px;
+}
+
+.icon-md {
+  height: 20px;
+  width: 20px;
+}
+
+.icon-lg {
+  height: 24px;
+  width: 24px;
+}
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+  display: none;
+}
+
+/* Create custom checkbox */
+input[type="checkbox"]+span {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 1px;
+  border: 2px solid var(--color-secondary);
+  position: relative;
+  cursor: pointer;
+}
+
+/* Selected state */
+input[type="checkbox"]:checked+span {
+  /* border-color: var(--color-dark-100); */
+}
+
+/* Checkmark styles for selected state */
+input[type="checkbox"]:checked+span::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 9px;
+  border: solid var(--color-green-100);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Disabled state */
+input[type="checkbox"]:disabled+span {
+  border-color: var(--color-dark-100);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Disabled and selected state */
+input[type="checkbox"]:checked:disabled+span {
+  border-color: var(--color-dark-100);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Checkmark styles for disabled and selected state */
+input[type="checkbox"]:checked:disabled+span::after {
+  border-color: var(--color-dark-300);
+}
+
+
+.increment-btn, .decrement-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #405164;
+}
+
+button {
+  background: var(--color-dark-200);
+  color: var(--color-white-100);
+  border: 1px solid transparent;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: var(--font-family-public-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  box-shadow: 0 1px 2px var(--color-shading-200-20);
+  cursor: pointer;
+  transition: border 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover::before, button:hover::before, button:active::before {
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.2s;
+  width: 100%;
+}
+
+button:hover::before, button:focus::before {
+  background: var(--color-shading-200-20);
+}
+
+button:active::before {
+  background: var(--color-shading-200-40) !important;
+}
+
+
+button:disabled {
+  background: var(--color-dark-100) !important;
+  color: var(--color-medium-200) !important;
+}
+
+button:disabled::before {
+  opacity: 0 !important;
 }

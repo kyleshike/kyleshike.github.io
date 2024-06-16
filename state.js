@@ -49,7 +49,7 @@ function applyState() {
     state.get("copper") ?? 0;
   document.querySelector('input[name="mistyStepConsumed"]').checked =
     state.get("mistyStepConsumed");
-  if (isEditor()) {
+  if (isEditor) {
     document.getElementById("portentDieOne").innerHTML =
       state.get("portentDieOne");
     document.getElementById("portentDieTwo").innerHTML =
@@ -94,7 +94,9 @@ function applyState() {
 
 function saveState() {
   localStorage.setItem("state", JSON.stringify(state._store));
-  writeState(state._store);
+  if (canEdit) {
+    writeState(state._store);
+  }
 }
 
 async function restoreState() {

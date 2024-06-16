@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arannis Character Sheet - Stats</title>
+    <title>Arannis Character Sheet</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
 
@@ -30,9 +30,9 @@
             <td>30 ft</td>
             <td id="level">3</td>
             <td>
-              <input type="checkbox" name="hitDice" onchange="updateHitDice(this.checked)">
-              <input type="checkbox" name="hitDice" onchange="updateHitDice(this.checked)">
-              <input type="checkbox" name="hitDice" onchange="updateHitDice(this.checked)">
+              <label><input type="checkbox" name="hitDice" onchange="updateHitDice(this.checked)"><span></span></label>
+              <label><input type="checkbox" name="hitDice" onchange="updateHitDice(this.checked)"><span></span></label>
+              <label><input type="checkbox" name="hitDice" onchange="updateHitDice(this.checked)"><span></span></label>
             </td>
           </tr>
         </tbody>
@@ -229,7 +229,9 @@
               <button id="portentDieOne" onclick="state.set('portentDieOneConsumed', true)">-</button>
               <button id="portentDieTwo" onclick="state.set('portentDieTwoConsumed', true)">-</button>
             </td>
-            <td><input type="checkbox" name="mistyStepConsumed" onchange="state.set('mistyStepConsumed', this.checked)"></td>
+            <td>
+              <label><input type="checkbox" name="mistyStepConsumed" onchange="state.set('mistyStepConsumed', this.checked)"><span></span></label>
+            </td>
           </tbody>
         </table>
        </section>
@@ -278,10 +280,10 @@
 
       <section id='levelOneSpells'>
         <h2>Level 1 Spells</h2>
-        <input type="checkbox" name='levelOneSpellSlotsConsumed' onchange="updateSpellSlot('levelOne', this.checked)">
-        <input type="checkbox" name='levelOneSpellSlotsConsumed' onchange="updateSpellSlot('levelOne', this.checked)">
-        <input type="checkbox" name='levelOneSpellSlotsConsumed' onchange="updateSpellSlot('levelOne', this.checked)">
-        <input type="checkbox" name='levelOneSpellSlotsConsumed' onchange="updateSpellSlot('levelOne', this.checked)">
+        <label><input type="checkbox" name='levelOneSpellSlotsConsumed' onchange="updateSpellSlot('levelOne', this.checked)"><span></span></label>
+        <label><input type="checkbox" name='levelOneSpellSlotsConsumed' onchange="updateSpellSlot('levelOne', this.checked)"><span></span></label>
+        <label><input type="checkbox" name='levelOneSpellSlotsConsumed' onchange="updateSpellSlot('levelOne', this.checked)"><span></span></label>
+        <label><input type="checkbox" name='levelOneSpellSlotsConsumed' onchange="updateSpellSlot('levelOne', this.checked)"><span></span></label>
 
         <table>
           <thead>
@@ -338,8 +340,8 @@
 
       <section id="levelTwoSpells">
         <h2>Level 2 Spells</h2>
-        <input type="checkbox" name='levelTwoSpellSlotsConsumed' onchange="updateSpellSlot('levelTwo', this.checked)">
-        <input type="checkbox" name='levelTwoSpellSlotsConsumed' onchange="updateSpellSlot('levelTwo', this.checked)">
+        <label><input type="checkbox" name='levelTwoSpellSlotsConsumed' onchange="updateSpellSlot('levelTwo', this.checked)"><span></span></label>
+        <label><input type="checkbox" name='levelTwoSpellSlotsConsumed' onchange="updateSpellSlot('levelTwo', this.checked)"><span></span></label>
 
         <table>
           <thead>
@@ -402,7 +404,7 @@
     const db = getFirestore(app);
     const auth = getAuth(app);
 
-    function isEditor() {
+    const isEditor = (() => {
       const _isEditor = localStorage.getItem("isEditor");
 
       if(_isEditor === null) {
@@ -412,7 +414,7 @@
       } else {
         return _isEditor === 'true';
       }
-    }
+    })();
 
     // Save state function
     async function writeState(state) {
@@ -438,7 +440,7 @@
       }
     }
 
-    if(!isEditor()) {
+    if(!isEditor) {
       // Real-time listener for state changes
       onSnapshot(doc(db, 'state', 'exampleState'), (doc) => {
         if (doc.exists()) {
@@ -448,20 +450,14 @@
       });
     }
 
-    async function login(email, password) {
-      try {
-        await signInWithEmailAndPassword(auth, email, password);
-      } catch (error) {
-        console.error('Error logging in:', error);
-      }
-    }
-
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       if(!user) {
         disableAllInputsAndButtons();
         if(isEditor()) {
-          debugger;
-          promptSignin();
+          const email = window.prompt('email');
+          const password = window.prompt('password');
+
+          if(email && password) await signInWithEmailAndPassword(auth, email, password);
         }
       } else {
         enableAllInputsAndButtons();
@@ -472,15 +468,6 @@
     window.writeState = writeState;
     window.readState = readState;
     window.isEditor = isEditor;
-    
-    function promptSignin() {
-      const email = window.prompt('email');
-      const password = window.prompt('password');
-
-      if(email && password) login(email, password);
-    }
-
-    disableAllInputsAndButtons();
   </script>
 
   <script type="text/javascript" src="./util.js"></script>
