@@ -1,0 +1,18 @@
+Object.assign(window, {
+  arcaneRecoveryConsumed: "arcaneRecoveryConsumed",
+  copper: "copper",
+  electrum: "electrum",
+  gold: "gold",
+  hiddenSections: "hiddenSections",
+  hitDiceConsumed: "hitDiceConsumed",
+  hitPoints: "hitPoints",
+  levelOneSpellSlotsConsumed: "levelOneSpellSlotsConsumed",
+  levelTwoSpellSlotsConsumed: "levelTwoSpellSlotsConsumed",
+  mageArmorActive: "mageArmorActive",
+  mistyStepConsumed: "mistyStepConsumed",
+  portentDieOne: "portentDieOne",
+  portentDieOneConsumed: "portentDieOneConsumed",
+  portentDieTwo: "portentDieTwo",
+  portentDieTwoConsumed: "portentDieTwoConsumed",
+  silver: "silver",
+});
