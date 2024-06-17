@@ -1,0 +1,2 @@
+- put everything else about the chracter into state & persist it.
+- add a decent mechanism for exporting it
