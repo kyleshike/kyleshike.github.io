@@ -265,6 +265,7 @@
           <div class="cell">Name</div>
           <div class="cell">Damage</div>
           <div class="cell">Saving Throw</div>
+          <div class="cell">Range / Area</div>
         </div>
 
         <div class="row" data-description="Frostbite: You cause numbing frost to form on one creature that you can see within range. The target must make a Constitution saving throw. On a failed save, the target takes 1d6 cold damage, and it has disadvantage on the next weapon attack roll it makes before the end of its next turn.
@@ -273,6 +274,7 @@ The spell’s damage increases by 1d6 when you reach 5th level (2d6), 11th level
           <div class="cell">Frostbite</div>
           <div class="cell">1d6 cold</div>
           <div class="cell centered">CON</div>
+          <div class="cell">60<small>ft</small></div>
         </div>
 
         <div class="row"
@@ -286,6 +288,7 @@ If a creature uses its action to examine the sound or image, the creature can de
           <div class="cell">Minor Illusion</div>
           <div class="cell centered">/</div>
           <div class="cell centered">/</div>
+          <div class="cell">30<small>ft</small> / 5 <small>ft cube</small></div>
         </div>
 
         <div class="row" data-description="Poison Spray: You extend your hand toward a creature you can see within range and project a puff of noxious gas from your palm. The creature must succeed on a Constitution saving throw or take 1d12 poison damage.
@@ -294,6 +297,7 @@ This spell's damage increases by 1d12 when you reach 5th level (2d12), 11th leve
           <div class="cell">Poison Spray</div>
           <div class="cell">1d12 poison</div>
           <div class="cell centered">CON</div>
+          <div class="cell">10<small>ft</small></div>
         </div>
       </div>
 
@@ -313,9 +317,23 @@ This spell's damage increases by 1d12 when you reach 5th level (2d12), 11th leve
           <div class="cell">Name</div>
           <div class="cell">Damage</div>
           <div class="cell">Saving Throw</div>
+          <div class="cell">Range / Area</div>
           <div class="cell"><img src=" ./svgs/bolt.svg"></div>
           <div class="cell"><img src="./svgs/academic-cap.svg"></div>
         </div>
+
+        <div class="row"
+          data-description="Cause Fear: You awaken the sense of mortality in one creature you can see within range. A construct or an undead is immune to this effect. The target must succeed on a Wisdom saving throw or become frightened of you until the spell ends. The frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+
+At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st. The creatures must be within 30 feet of each other when you target them.">
+          <div class="cell">Cause Fear</div>
+          <div class="cell centered">/</div>
+          <div class="cell centered">CHAR</div>
+          <div class="cell">60<small>ft</small></div>
+          <div class="cell centered"><img src="./svgs/check.svg"></div>
+          <div class="cell centered"><img src="./svgs/check.svg"></div>
+        </div>
+
         <div class="row"
           data-description="Detect Magic: For the duration, you sense the presence of magic within 30 feet of you. If you sense magic in this way, you can use your action to see a faint aura around any visible creature or object in the area that bears magic, and you learn its school of magic, if any.
 
@@ -325,7 +343,9 @@ The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 i
           <div class="cell centered">/</div>
           <div class="cell centered">/</div>
           <div class="cell centered">/</div>
+          <div class="cell centered">/</div>
         </div>
+
         <div class="row"
           data-description="Grease: Slick grease covers the ground in a 10-foot square centered on a point within range and turns it into difficult terrain for the duration.
 
@@ -333,6 +353,7 @@ When the grease appears, each creature standing in its area must succeed on a De
           <div class="cell">Grease</div>
           <div class="cell centered">/</div>
           <div class="cell centered">DEX</div>
+          <div class="cell">60<small>ft</small>/10<small>ft square</small></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <span><button class="castBtn" name="castLevelOne">Cast</button></span>
@@ -340,6 +361,7 @@ When the grease appears, each creature standing in its area must succeed on a De
         <div class="row"
           data-description="Mage Armor: You touch a willing creature who isn't wearing armor, and a protective magical force surrounds it until the spell ends. The target's base AC becomes 13 + its Dexterity modifier. The spell ends if the target dons armor or if you dismiss the spell as an action.">
           <div class="cell">Mage Armor</div>
+          <div class="cell centered">/</div>
           <div class="cell centered">/</div>
           <div class="cell centered">/</div>
           <div class="cell centered">/</div>
@@ -353,6 +375,7 @@ When you cast this spell using a spell slot of 2nd level or higher, the spell cr
           <div class="cell">Magic Missile</div>
           <div class="cell">1d4+1 force</div>
           <div class="cell centered">/</div>
+          <div class="cell">120<small>ft</small></div>
           <div class="cell centered">/</div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <span><button class="castBtn" name="castLevelOne" data-can-upcast="true">Cast</button></span>
@@ -364,8 +387,22 @@ When you cast this spell using a spell slot of 2nd level or higher, the damage i
           <div class="cell">Ray of Sickness</div>
           <div class="cell">2d8 poison</div>
           <div class="cell centered">CON</div>
+          <div class="cell">60<small>ft</small></div>
           <div class="cell centered">/</div>
+          <div class="cell centered">/</div>
+          <span><button class="castBtn" name="castLevelOne">Cast</button></span>
+        </div>
+
+        <div class="row"
+          data-description="Tasha's Hideous Laughter: A creature of your choice that you can see within range perceives everything as hilariously funny and falls into fits of laughter if this spell affects it. The target must succeed on a Wisdom saving throw or fall prone, becoming incapacitated and unable to stand up for the duration. A creature with an Intelligence score of 4 or less isn’t affected.
+
+At the end of each of its turns, and each time it takes damage, the target can make another Wisdom saving throw. The target has advantage on the saving throw if it’s triggered by damage. On a success, the spell ends.">
+          <div class="cell">Tasha’s Hideous Laughter</div>
+          <div class="cell">2d8 poison</div>
+          <div class="cell centered">CON</div>
+          <div class="cell">60<small>ft</small></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
+          <div class="cell centered">/</div>
           <span><button class="castBtn" name="castLevelOne">Cast</button></span>
         </div>
       </div>
@@ -388,7 +425,8 @@ When you cast this spell using a spell slot of 2nd level or higher, the damage i
         <div class="row header">
           <div class="cell">Name</div>
           <div class="cell">Damage</div>
-          <div class="cell">Saving Throw Typ</div>
+          <div class="cell">Saving Throw</div>
+          <div class="cell">Range / Area</div>
           <div class="cell"><img src="./svgs/bolt.svg"></div>
           <div class="cell"><img src="./svgs/academic-cap.svg"></div>
         </div>
@@ -399,7 +437,8 @@ When you cast this spell using a spell slot of 2nd level or higher, the damage i
 At Higher Levels. When you cast this spell using a spell slot of 3rd level or higher, you can target one additional humanoid for each slot level above 2nd. The humanoids must be within 30 feet of each other when you target them.">
           <div class="cell">Hold Person</div>
           <div class="cell centered">/</div>
-          <div class="cell">WIS</div>
+          <div class="cell centered">WIS</div>
+          <div class="cell">60<small>ft</small></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <span><button class="castBtn" data-can-upcast="true" name="castLevelTwo">Cast</button></span>
@@ -414,6 +453,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
           <div class="cell">Scorching Ray</div>
           <div class="cell">2d6 fire</div>
           <div class="cell centered">/</div>
+          <div class="cell">120<small>ft</small></div>
           <div class="cell centered">/</div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <span><button class="castBtn" data-can-upcast="true" name="castLevelTwo">Cast</button></span>
