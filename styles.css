@@ -260,6 +260,7 @@ button:disabled::before {
 .cell {
   padding: 8px 12px;
   min-height: 40px;
+  align-items: center;
 }
 
 .cell.centered {

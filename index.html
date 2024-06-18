@@ -274,7 +274,7 @@ The spell’s damage increases by 1d6 when you reach 5th level (2d6), 11th level
           <div class="cell">Frostbite</div>
           <div class="cell">1d6 cold</div>
           <div class="cell centered">CON</div>
-          <div class="cell">60<small>ft</small></div>
+          <div class="cell centered">60<small>ft</small></div>
         </div>
 
         <div class="row"
@@ -288,7 +288,7 @@ If a creature uses its action to examine the sound or image, the creature can de
           <div class="cell">Minor Illusion</div>
           <div class="cell centered">/</div>
           <div class="cell centered">/</div>
-          <div class="cell">30<small>ft</small> / 5 <small>ft cube</small></div>
+          <div class="cell centered">30<small>ft</small> / 5 <small>ft cube</small></div>
         </div>
 
         <div class="row" data-description="Poison Spray: You extend your hand toward a creature you can see within range and project a puff of noxious gas from your palm. The creature must succeed on a Constitution saving throw or take 1d12 poison damage.
@@ -297,7 +297,7 @@ This spell's damage increases by 1d12 when you reach 5th level (2d12), 11th leve
           <div class="cell">Poison Spray</div>
           <div class="cell">1d12 poison</div>
           <div class="cell centered">CON</div>
-          <div class="cell">10<small>ft</small></div>
+          <div class="cell centered">10<small>ft</small></div>
         </div>
       </div>
 
@@ -329,7 +329,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
           <div class="cell">Cause Fear</div>
           <div class="cell centered">/</div>
           <div class="cell centered">CHAR</div>
-          <div class="cell">60<small>ft</small></div>
+          <div class="cell centered">60<small>ft</small></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
         </div>
@@ -347,13 +347,36 @@ The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 i
         </div>
 
         <div class="row"
+          data-description="Find Familiar: You gain the service of a familiar, a spirit that takes an animal form you choose: bat, cat, crab, frog (toad), hawk, lizard, octopus, owl, poisonous snake, fish (quipper), rat, raven, seahorse, spider, or weasel. Appearing in an unoccupied space within range, the familiar has the statistics of the chosen form, though it is a celestial, fey, or fiend (your choice) instead of a beast.
+
+Your familiar acts independently of you but always obeys your commands. In combat, it rolls its own initiative and acts on its own turn. A familiar can't attack, but it can take other actions as normal.
+
+When the familiar drops to 0 hit points, it disappears, leaving behind no physical form. It reappears after you cast this spell again.
+
+While your familiar is within 100 feet of you, you can communicate with it telepathically. Additionally, as an action, you can see through your familiar's eyes and hear what it hears until the start of your next turn, gaining the benefits of any special senses that the familiar has. During this time, you are deaf and blind with regard to your own senses.
+
+As an action, you can temporarily dismiss your familiar. It disappears into a pocket dimension where it awaits your summons. Alternatively, you can dismiss it forever. As an action while it is temporarily dismissed, you can cause it to reappear in any unoccupied space within 30 feet of you.
+
+You can't have more than one familiar at a time. If you cast this spell while you already have a familiar, you instead cause it to adopt a new form. Choose one of the forms from the above list. Your familiar transforms into the chosen creature.
+
+Finally, when you cast a spell with a range of touch, your familiar can deliver the spell as if it had cast the spell. Your familiar must be within 100 feet of you, and it must use its reaction to deliver the spell when you cast it. If the spell requires an attack roll, you use your attack modifier for the roll.">
+          <div class="cell">Find Familiar (ritual)</div>
+          <div class="cell centered">/</div>
+          <div class="cell centered">/</div>
+          <div class="cell centered">10<small>ft</small></div>
+          <div class="cell centered">/</div>
+          <div class="cell centered"><img src="./svgs/check.svg"></div>
+          <span><button class="castBtn" name="castLevelOne" data-can-upcast="false">Cast</button></span>
+        </div>
+
+        <div class="row"
           data-description="Grease: Slick grease covers the ground in a 10-foot square centered on a point within range and turns it into difficult terrain for the duration.
 
 When the grease appears, each creature standing in its area must succeed on a Dexterity saving throw or fall prone. A creature that enters the area or ends its turn there must also succeed on a Dexterity saving throw or fall prone.">
           <div class="cell">Grease</div>
           <div class="cell centered">/</div>
           <div class="cell centered">DEX</div>
-          <div class="cell">60<small>ft</small>/10<small>ft square</small></div>
+          <div class="cell centered">60<small>ft</small>/10<small>ft square</small></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <span><button class="castBtn" name="castLevelOne">Cast</button></span>
@@ -368,18 +391,7 @@ When the grease appears, each creature standing in its area must succeed on a De
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <span><button class="castBtn" name="castMageArmor">Cast</button></span>
         </div>
-        <div class="row"
-          data-description="Magic Missile: You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.
 
-When you cast this spell using a spell slot of 2nd level or higher, the spell creates one more dart for each slot level above 1st.">
-          <div class="cell">Magic Missile</div>
-          <div class="cell">1d4+1 force</div>
-          <div class="cell centered">/</div>
-          <div class="cell">120<small>ft</small></div>
-          <div class="cell centered">/</div>
-          <div class="cell centered"><img src="./svgs/check.svg"></div>
-          <span><button class="castBtn" name="castLevelOne" data-can-upcast="true">Cast</button></span>
-        </div>
         <div class="row"
           data-description="Ray of Sickness: A ray of sickening greenish energy lashes out toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 2d8 poison damage and must make a Constitution saving throw. On a failed save, it is also poisoned until the end of your next turn.
 
@@ -387,7 +399,7 @@ When you cast this spell using a spell slot of 2nd level or higher, the damage i
           <div class="cell">Ray of Sickness</div>
           <div class="cell">2d8 poison</div>
           <div class="cell centered">CON</div>
-          <div class="cell">60<small>ft</small></div>
+          <div class="cell centered">60<small>ft</small></div>
           <div class="cell centered">/</div>
           <div class="cell centered">/</div>
           <span><button class="castBtn" name="castLevelOne">Cast</button></span>
@@ -400,7 +412,7 @@ At the end of each of its turns, and each time it takes damage, the target can m
           <div class="cell">Tasha’s Hideous Laughter</div>
           <div class="cell">2d8 poison</div>
           <div class="cell centered">CON</div>
-          <div class="cell">60<small>ft</small></div>
+          <div class="cell centered">60<small>ft</small></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <div class="cell centered">/</div>
           <span><button class="castBtn" name="castLevelOne">Cast</button></span>
@@ -438,7 +450,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
           <div class="cell">Hold Person</div>
           <div class="cell centered">/</div>
           <div class="cell centered">WIS</div>
-          <div class="cell">60<small>ft</small></div>
+          <div class="cell centered">60<small>ft</small></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <span><button class="castBtn" data-can-upcast="true" name="castLevelTwo">Cast</button></span>
@@ -453,7 +465,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
           <div class="cell">Scorching Ray</div>
           <div class="cell">2d6 fire</div>
           <div class="cell centered">/</div>
-          <div class="cell">120<small>ft</small></div>
+          <div class="cell centered">120<small>ft</small></div>
           <div class="cell centered">/</div>
           <div class="cell centered"><img src="./svgs/check.svg"></div>
           <span><button class="castBtn" data-can-upcast="true" name="castLevelTwo">Cast</button></span>
